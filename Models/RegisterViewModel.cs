@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 namespace bankaccounts.Models
 {
-    public class UserViewModel : BaseEntity
+    public class RegisterViewModel : BaseEntity
     {
         [Required]
         [MinLength(2)]

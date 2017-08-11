@@ -6,30 +6,39 @@
         }
 
     
-    @model bankaccounts.Models.User
+    @model bankaccounts.Models.RegisterViewModel
         <h3> Registration </h3>
 
         <form asp-controller="Home" asp-action="Register" method="post">
                 <p>
                 <label asp-for="FirstName">FirstName:</label>
                 <input asp-for="FirstName" id ="FirstName" name="FirstName">
+                <span asp-validation-for="FirstName"></span>
                 </p>
                 <p>
                 <label asp-for="LastName">LastName:</label>
                 <input asp-for="LastName" id ="LastName" name="LastName">
+                <span asp-validation-for="LastName"></span>
                 </p>
                 <p>
                 <label asp-for="EmailId">EmailId:</label>
                 <input asp-for="EmailId" type = "email" name="EmailId">
-
+                <span asp-validation-for="EmailId"></span>
                 </p><p>
                 <label asp-for="Password">Password:</label>
                 <input asp-for="Password" type= "password" name="Password">
+                <span asp-validation-for="Password"></span>
                 </p><p>
+                
+                <label asp-for="PasswordConfirmation">Confirm password:</label>
+                <input asp-for="PasswordConfirmation" type= "password" name="PasswordConfirmation">
+                <span asp-validation-for="PasswordConfirmation"></span>
+                <p></p>
 
-                <button type="submit">Submit
+                <button type="submit">Submit </button>
                 <a href = "/login">Already Registered? </a>
             </form>
+                            
 
     </body>
 </html>

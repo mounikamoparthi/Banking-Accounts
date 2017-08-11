@@ -9,7 +9,7 @@
     @model bankaccounts.Models.User
         <h3> Login </h3>
 
-        <form asp-controller="Home" asp-action="Login" method="post">
+        <form asp-controller="Home" asp-action="PostLogin" method="post">
                 </p>
                 <p>
                 <label asp-for="EmailId">EmailId:</label>
@@ -20,7 +20,7 @@
                 <input asp-for="Password" type= "password" name="Password">
                 </p><p>
 
-                <button type="submit">Submit
+                <button type="submit">Submit </button>
                 <a href = "/">Need to Register? </a>
             </form>
 
