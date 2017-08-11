@@ -6,7 +6,7 @@ namespace bankaccounts.Models
     {
         public BankContext(DbContextOptions<BankContext> options) : base(options) { }
 
-        public DbSet<Person> user {get;set;}
+        public DbSet<User> user {get;set;}
     }
 
 }

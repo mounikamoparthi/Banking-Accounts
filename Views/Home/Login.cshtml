@@ -1,5 +1,5 @@
 <html>
-    <title>  Registration </title>
+    <title> Login  </title>
     <body>
         @{
             ViewData["Title"] = "Home Page";
@@ -7,16 +7,9 @@
 
     
     @model bankaccounts.Models.User
-        <h3> Registration </h3>
+        <h3> Login </h3>
 
-        <form asp-controller="Home" asp-action="Register" method="post">
-                <p>
-                <label asp-for="FirstName">FirstName:</label>
-                <input asp-for="FirstName" id ="FirstName" name="FirstName">
-                </p>
-                <p>
-                <label asp-for="LastName">LastName:</label>
-                <input asp-for="LastName" id ="LastName" name="LastName">
+        <form asp-controller="Home" asp-action="Login" method="post">
                 </p>
                 <p>
                 <label asp-for="EmailId">EmailId:</label>
@@ -28,7 +21,7 @@
                 </p><p>
 
                 <button type="submit">Submit
-                <a href = "/login">Already Registered? </a>
+                <a href = "/">Need to Register? </a>
             </form>
 
     </body>
