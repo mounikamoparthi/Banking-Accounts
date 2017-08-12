@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+
 namespace bankaccounts.Models
 {
     public class User : BaseEntity
@@ -10,6 +12,14 @@ namespace bankaccounts.Models
         public string Password { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public double CurrentBal { get; set;}
+        public List<Transaction> Transactions { get; set; }
+ 
+        public User()
+        {
+            Transactions = new List<Transaction>();
+            CurrentBal = 0;
+        }
     }
 }
     

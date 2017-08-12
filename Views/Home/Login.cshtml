@@ -23,6 +23,11 @@
                 <button type="submit">Submit </button>
                 <a href = "/">Need to Register? </a>
             </form>
+            @{
+                if(ViewBag.Errors != null){
+                    <p>@ViewBag.Errors[0]</p>
+                }
+            }
 
     </body>
 </html>

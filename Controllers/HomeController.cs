@@ -50,7 +50,7 @@ namespace bankaccounts.Controllers
                 User EnteredPerson = _context.user.SingleOrDefault(user => user.EmailId == model.EmailId);
                 HttpContext.Session.SetString("FirstName", EnteredPerson.FirstName);
                 HttpContext.Session.SetInt32("UserId",EnteredPerson.UserId);
-                return RedirectToAction("show");
+                return RedirectToAction("show",EnteredPerson.UserId);
             }
             else 
             {
@@ -70,15 +70,24 @@ namespace bankaccounts.Controllers
         public IActionResult PostLogin(string EmailId, string Password)
         {
              User loggedUser = _context.user.SingleOrDefault(user => user.EmailId == EmailId);
-             HttpContext.Session.SetString("FirstName", loggedUser.FirstName);
-             HttpContext.Session.SetInt32("UserId", loggedUser.UserId);
-             return RedirectToAction("show");
+             if (loggedUser != null)
+             {
+                HttpContext.Session.SetString("FirstName", loggedUser.FirstName);
+                HttpContext.Session.SetInt32("UserId", loggedUser.UserId);
+                return RedirectToAction("show",loggedUser.UserId);
+             }
+
+               ViewBag.Errors = new List<string>(){ "Check Username and password"};
+                return View("Login");
         }
         
         [HttpGet]
         [Route("show")]
         public IActionResult show(){
             ViewBag.UserName = HttpContext.Session.GetString("FirstName");
+            var loggedUserId = HttpContext.Session.GetInt32("UserId");
+            User user_data = _context.user.Single(user =>user.UserId == loggedUserId);
+            ViewBag.CurrentBal = user_data.CurrentBal;
             return View("show");
         }
        
