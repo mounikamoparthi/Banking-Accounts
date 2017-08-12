@@ -88,6 +88,7 @@ namespace bankaccounts.Controllers
             var loggedUserId = HttpContext.Session.GetInt32("UserId");
             User user_data = _context.user.Single(user =>user.UserId == loggedUserId);
             ViewBag.CurrentBal = user_data.CurrentBal;
+            ViewBag.Transactions = user_data.Transactions.ToList();
             return View("show");
         }
        

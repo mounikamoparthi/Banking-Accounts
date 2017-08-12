@@ -1,4 +1,28 @@
 
+<link rel="stylesheet" href="~/css/site.css" />
 <h3> Welcome @ViewBag.UserName </h3>
 
 <p> Current Balance: @ViewBag.CurrentBal </p>
+
+
+<table border = 1>
+    <div class = table>
+@{
+    
+    <tr>
+        <td> Transaction Id </td>
+        <td> Amount </td>
+        <td> Transact Date </td>
+    </tr>
+    foreach(var transact in @ViewBag.Transactions){
+        <tr> 
+            <td> @transact.TransactionId </td>
+            <td> @transact.Amount </td>
+            <td> @transact.CreatedAt.ToString("MMMM dd yyyy HH mm") </td>
+        </tr>
+    }
+
+}
+</div>
+
+</table>
