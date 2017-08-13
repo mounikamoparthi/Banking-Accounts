@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 //using Microsoft.AspNetCore.Identity;
 using bankaccounts.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace bankaccounts.Controllers
 {
@@ -86,9 +87,10 @@ namespace bankaccounts.Controllers
         public IActionResult show(){
             ViewBag.UserName = HttpContext.Session.GetString("FirstName");
             var loggedUserId = HttpContext.Session.GetInt32("UserId");
-            User user_data = _context.user.Single(user =>user.UserId == loggedUserId);
+            var user_data = _context.user.Include(user=> user.Transactions)
+            .Single(user =>user.UserId == loggedUserId);
             ViewBag.CurrentBal = user_data.CurrentBal;
-            ViewBag.Transactions = user_data.Transactions.ToList();
+            ViewBag.Transactions = user_data.Transactions;
             return View("show");
         }
        

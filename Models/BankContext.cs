@@ -7,6 +7,8 @@ namespace bankaccounts.Models
         public BankContext(DbContextOptions<BankContext> options) : base(options) { }
 
         public DbSet<User> user {get;set;}
+
+        public DbSet<Transaction> transaction {get; set;}
     }
 
 }

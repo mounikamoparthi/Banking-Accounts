@@ -3,6 +3,21 @@
 <h3> Welcome @ViewBag.UserName </h3>
 
 <p> Current Balance: @ViewBag.CurrentBal </p>
+@{
+                if(ViewBag.status != null){
+                    <p>@ViewBag.status[0]</p>
+                }
+            }
+
+
+<h3>Add a new transaction!</h3>
+<form asp-controller="Transact" asp-action="RunTransaction">
+    <label for='Amount'>Amount: </label>
+        <input type='number' name='Amount'>
+    <button type='submit' class='btn btn-default'>Withdraw/Deposit</button>
+</form>
+
+
 
 
 <table border = 1>
@@ -14,11 +29,11 @@
         <td> Amount </td>
         <td> Transact Date </td>
     </tr>
-    foreach(var transact in @ViewBag.Transactions){
+    @foreach(var transact in @ViewBag.Transactions){
         <tr> 
             <td> @transact.TransactionId </td>
             <td> @transact.Amount </td>
-            <td> @transact.CreatedAt.ToString("MMMM dd yyyy HH mm") </td>
+            <td> @transact.CreatedAt.ToString("MMMM dd yyyy HH:mm") </td>
         </tr>
     }
 
